@@ -1,0 +1,108 @@
+.show {
+    display: block
+}
+
+.hide {
+    display: none
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1s;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0.1;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fade_time {
+    animation-name: fade;
+    animation-duration: 1s;
+}
+
+@keyframes fade_time {
+    from {
+        opacity: 0.1;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.gradient-button {
+    width: 130px;
+    height: 65px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 40px 40px #c51abb inset, 0 0 0 0 #F137A6;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: white;
+    transition: .15s ease-in-out;
+}
+
+.gradient-button:hover {
+    box-shadow: 0 0 10px 0 #F137A6 inset, 0 0 10px 4px #F137A6;
+    color: #F137A6;
+}
+
+input[type="file"] {
+    color: transparent;
+    padding-top: 17px;
+    cursor: pointer;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+input[type="file"]::before {
+    content: 'Загрузить';
+    color: black;
+    display: inline-block;
+    padding: 6px 23px;
+    outline: none;
+    white-space: nowrap;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 10pt;
+}
+.calc input[type="file"]::before {
+    padding:4px 72px;
+    font-size: 18px;
+}
+.file_upload{
+    text-align: center;
+}
+.calc #size,
+.calc #material,
+.calc #options{
+    border: 1px solid black;
+    border-radius: 20px;
+    width: 250px;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    cursor: pointer;
+}
+.calc h4{
+    margin-bottom: 0;
+}
+.calc form{
+    text-align: center;
+}
+.calc input[type="file"]{
+    width: 250px;
+}
+body{
+    overflow-x: hidden;
+}
