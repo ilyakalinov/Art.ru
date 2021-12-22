@@ -6,12 +6,15 @@ import forms from './modules/forms';
 import mask from './modules/mask';
 import checkTextInp from './modules/checkTextInp';
 import showStyles from './modules/showStyles';
+import calc from './modules/calc';
 
 window.addEventListener('DOMContentLoaded', () => {
     const modalTimerId = setTimeout(() => openModal('.popup-consultation', modalTimerId), 60000);
 
     modal('.button-design', '.popup-design', modalTimerId);
     modal('.button-consultation', '.popup-consultation', modalTimerId);
+    modal('.fixed-gift', '.popup-gift', modalTimerId);
+    
 
     sliders('.feedback-slider-item', 'vertical', '.main-prev-btn', '.main-next-btn', 5000);
     sliders('.main-slider-item', '', '', '', 5000);
@@ -27,6 +30,8 @@ window.addEventListener('DOMContentLoaded', () => {
     checkTextInp('[name="message"]');
 
     showStyles('.button-styles', '#styles .row');
+
+    calc('#size', '#material', '#options', '.promocode', '.calc-price');
 
     showModalByScroll('.popup-consultation', modalTimerId);
 });

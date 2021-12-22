@@ -48,7 +48,10 @@ const forms = (formSelector, modalSelector, childSelector, modalTimerId, state) 
 
             form.insertAdjacentElement('afterend', loadModal);
 
+            const sum = document.querySelector('.calc-price').innerHTML;
+            console.log(sum);
             const formData = new FormData(form);
+            formData.append('sum', sum);
             let api = path.questions;
 
             form.closest('.popup-design') || form.classList.contains('calc_form') ? api = path.designer : api = path.questions;

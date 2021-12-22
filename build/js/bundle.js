@@ -2,6 +2,138 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/js/modules/calc.js":
+/*!********************************!*\
+  !*** ./src/js/modules/calc.js ***!
+  \********************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services */ "./src/js/services.js");
+
+
+const calc = (size, mat, options, promo, result) => {
+    const sizeBlock = document.querySelector(size),
+            matBlock = document.querySelector(mat),
+            optionsBlock = document.querySelector(options),
+            promoBlock = document.querySelector(promo),
+            resultBlock = document.querySelector(result);
+
+    let sum = 0;
+
+    const calcFunc = (resurse) => {
+        resurse.forEach(({s, m, l, xl, volocno, len, hlopok, gel, express, deliver}) => {
+            let size = 0,
+                mat = 0,
+                opt = 0,
+                promo = 0;
+
+            switch(sizeBlock.value){
+                case 's':
+                    size = s;
+                    break;
+                case 'm':
+                    size = m;
+                    break;
+                case 'l':
+                    size = l;
+                    break;
+                case 'xl':
+                    size = xl;
+                    break;
+            }
+
+            switch(matBlock.value){
+                case 'volocno':
+                    mat = volocno;
+                    break;
+                case 'len':
+                    mat = len;
+                    break;
+                case 'hlopok':
+                    mat = hlopok;
+                    break;
+            }
+            switch(optionsBlock.value){
+                case 'gel':
+                    opt = gel;
+                    break;
+                case 'express':
+                    opt = express;
+                    break;
+                case 'deliver':
+                    opt = deliver;
+                    break;
+            }    
+            console.log(size);
+            console.log(mat);
+            console.log(opt);
+
+            sum = Math.round((+size) * (+mat) + (+opt));
+
+            if(size == '' || mat == '') {
+                resultBlock.textContent = 'Пожалуйста, выберете все параметры';
+            } else if(promoBlock.value === 'IWANTPOPART') {
+                resultBlock.textContent = Math.round(sum * 0.7);
+            } else {
+                resultBlock.textContent = sum;
+            }
+        });
+    };
+
+    sizeBlock.addEventListener('change', () => {
+            (0,_services__WEBPACK_IMPORTED_MODULE_0__.getData)('http://localhost:3000/count')
+            .then(res => calcFunc(res));
+    });
+    matBlock.addEventListener('change', () => {
+        (0,_services__WEBPACK_IMPORTED_MODULE_0__.getData)('http://localhost:3000/count')
+        .then(res => calcFunc(res));
+    });
+    optionsBlock.addEventListener('change',  () => {
+        (0,_services__WEBPACK_IMPORTED_MODULE_0__.getData)('http://localhost:3000/count')
+        .then(res => calcFunc(res));
+    });
+    promoBlock.addEventListener('input',  () => {
+        (0,_services__WEBPACK_IMPORTED_MODULE_0__.getData)('http://localhost:3000/count')
+        .then(res => calcFunc(res));
+    });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (calc);
+
+
+
+// const calc = (size, mat, options, promo, result) => {
+//     const sizeBlock = document.querySelector(size),
+//             matBlock = document.querySelector(mat),
+//             optionsBlock = document.querySelector(options),
+//             promoBlock = document.querySelector(promo),
+//             resultBlock = document.querySelector(result);
+
+//     let sum = 0;
+
+//     const calcFunc = () => {
+//         sum = Math.round((+sizeBlock.value) * (+matBlock.value) + (+optionsBlock.value));
+
+//         if(sizeBlock.value == '' || matBlock.value == '') {
+//             resultBlock.textContent = 'Пожалуйста, выберете все параметры';
+//         } else if(promoBlock.value === 'IWANTPOPART') {
+//             resultBlock.textContent = Math.round(sum * 0.7);
+//         } else {
+//             resultBlock.textContent = sum;
+//         }
+//     };
+
+//     sizeBlock.addEventListener('change', calcFunc);
+//     matBlock.addEventListener('change', calcFunc);
+//     optionsBlock.addEventListener('change', calcFunc);
+//     promoBlock.addEventListener('input', calcFunc);
+// };
+
+// export default calc;
+
+/***/ }),
+
 /***/ "./src/js/modules/checkTextInp.js":
 /*!****************************************!*\
   !*** ./src/js/modules/checkTextInp.js ***!
@@ -85,7 +217,10 @@ const forms = (formSelector, modalSelector, childSelector, modalTimerId, state) 
 
             form.insertAdjacentElement('afterend', loadModal);
 
+            const sum = document.querySelector('.calc-price').innerHTML;
+            console.log(sum);
             const formData = new FormData(form);
+            formData.append('sum', sum);
             let api = path.questions;
 
             form.closest('.popup-design') || form.classList.contains('calc_form') ? api = path.designer : api = path.questions;
@@ -530,6 +665,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_mask__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/mask */ "./src/js/modules/mask.js");
 /* harmony import */ var _modules_checkTextInp__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/checkTextInp */ "./src/js/modules/checkTextInp.js");
 /* harmony import */ var _modules_showStyles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/showStyles */ "./src/js/modules/showStyles.js");
+/* harmony import */ var _modules_calc__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/calc */ "./src/js/modules/calc.js");
+
 
 
 
@@ -544,6 +681,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
     (0,_modules_modal__WEBPACK_IMPORTED_MODULE_0__["default"])('.button-design', '.popup-design', modalTimerId);
     (0,_modules_modal__WEBPACK_IMPORTED_MODULE_0__["default"])('.button-consultation', '.popup-consultation', modalTimerId);
+    (0,_modules_modal__WEBPACK_IMPORTED_MODULE_0__["default"])('.fixed-gift', '.popup-gift', modalTimerId);
+    
 
     (0,_modules_sliders__WEBPACK_IMPORTED_MODULE_2__["default"])('.feedback-slider-item', 'vertical', '.main-prev-btn', '.main-next-btn', 5000);
     (0,_modules_sliders__WEBPACK_IMPORTED_MODULE_2__["default"])('.main-slider-item', '', '', '', 5000);
@@ -559,6 +698,8 @@ window.addEventListener('DOMContentLoaded', () => {
     (0,_modules_checkTextInp__WEBPACK_IMPORTED_MODULE_5__["default"])('[name="message"]');
 
     (0,_modules_showStyles__WEBPACK_IMPORTED_MODULE_6__["default"])('.button-styles', '#styles .row');
+
+    (0,_modules_calc__WEBPACK_IMPORTED_MODULE_7__["default"])('#size', '#material', '#options', '.promocode', '.calc-price');
 
     (0,_services__WEBPACK_IMPORTED_MODULE_1__.showModalByScroll)('.popup-consultation', modalTimerId);
 });
