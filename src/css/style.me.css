@@ -106,3 +106,12 @@ input[type="file"]::before {
 body{
     overflow-x: hidden;
 }
+.none_works{
+    text-align: center;
+    font-size: 35px;
+    width: 100%;
+    margin-bottom: 60px;
+}
+.often-questions .accordion-block{
+    margin-top: 0;
+}

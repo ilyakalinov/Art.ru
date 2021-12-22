@@ -7,6 +7,10 @@ import mask from './modules/mask';
 import checkTextInp from './modules/checkTextInp';
 import showStyles from './modules/showStyles';
 import calc from './modules/calc';
+import {filter} from './modules/filter';
+import changePicture from './modules/changePicture';
+import accordion from './modules/accordion';
+import burgerMenu from './modules/burgerMenu';
 
 window.addEventListener('DOMContentLoaded', () => {
     const modalTimerId = setTimeout(() => openModal('.popup-consultation', modalTimerId), 60000);
@@ -32,6 +36,14 @@ window.addEventListener('DOMContentLoaded', () => {
     showStyles('.button-styles', '#styles .row');
 
     calc('#size', '#material', '#options', '.promocode', '.calc-price');
+
+    filter();
+
+    changePicture('.sizes-block');
+
+    accordion('.accordion-heading', '.accordion-block');
+
+    burgerMenu('.burger-menu', '.burger');
 
     showModalByScroll('.popup-consultation', modalTimerId);
 });
