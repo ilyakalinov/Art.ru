@@ -1453,7 +1453,7 @@ h4 {
   }
   .calc select {
     position: relative;
-    left: 30%;
+    left: 0;
   }
   .calc .button-transparent {
     margin: 4rem auto;

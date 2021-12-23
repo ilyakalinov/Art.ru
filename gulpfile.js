@@ -73,7 +73,7 @@ function fonts() {
 };
 function fontsProd() {
 	return gulp.src('./src/fonts/**/*')
-				.pipe(gulp.dest('./prod/fonts'))
+				.pipe(gulp.dest('./prodaction/fonts'))
 				.pipe(browserSync.stream());
 };
 function html() {

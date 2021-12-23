@@ -11,6 +11,8 @@ import {filter} from './modules/filter';
 import changePicture from './modules/changePicture';
 import accordion from './modules/accordion';
 import burgerMenu from './modules/burgerMenu';
+import scrolling from './modules/scoll';
+import drop from './modules/drop';
 
 window.addEventListener('DOMContentLoaded', () => {
     const modalTimerId = setTimeout(() => openModal('.popup-consultation', modalTimerId), 60000);
@@ -46,4 +48,8 @@ window.addEventListener('DOMContentLoaded', () => {
     burgerMenu('.burger-menu', '.burger');
 
     showModalByScroll('.popup-consultation', modalTimerId);
+
+    scrolling('.pageup');
+
+    drop();
 });
